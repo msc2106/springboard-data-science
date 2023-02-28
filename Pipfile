@@ -12,6 +12,7 @@ requests = "*"
 python-dotenv = "*"
 ydata-profiling = "*"
 openpyxl = "*"
+pexpect = "*"
 
 [dev-packages]
 
