@@ -13,6 +13,8 @@ python-dotenv = "*"
 ydata-profiling = "*"
 openpyxl = "*"
 pexpect = "*"
+ipywidgets = "*"
+jupyter = "*"
 
 [dev-packages]
 
