@@ -7,9 +7,9 @@
 -- Server version: 8.0.31
 -- PHP Version: 8.1.12
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- START TRANSACTION;
+-- SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -31,9 +31,9 @@ CREATE TABLE `Bookings` (
   `bookid` smallint DEFAULT NULL,
   `facid` tinyint DEFAULT NULL,
   `memid` tinyint DEFAULT NULL,
-  `starttime` varchar(19) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `starttime` varchar(19) DEFAULT NULL,
   `slots` tinyint DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `Bookings`
@@ -4095,13 +4095,13 @@ INSERT INTO `Bookings` (`bookid`, `facid`, `memid`, `starttime`, `slots`) VALUES
 
 CREATE TABLE `Facilities` (
   `facid` tinyint DEFAULT NULL,
-  `name` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(15) DEFAULT NULL,
   `membercost` decimal(2,1) DEFAULT NULL,
   `guestcost` decimal(3,1) DEFAULT NULL,
   `initialoutlay` mediumint DEFAULT NULL,
   `monthlymaintenance` smallint DEFAULT NULL,
-  `expense_label` char(1) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `expense_label` char(1) DEFAULT NULL
+);
 
 --
 -- Dumping data for table `Facilities`
@@ -4126,14 +4126,14 @@ INSERT INTO `Facilities` (`facid`, `name`, `membercost`, `guestcost`, `initialou
 
 CREATE TABLE `Members` (
   `memid` tinyint DEFAULT NULL,
-  `surname` varchar(17) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `firstname` varchar(9) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `address` varchar(39) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `surname` varchar(17) DEFAULT NULL,
+  `firstname` varchar(9) DEFAULT NULL,
+  `address` varchar(39) DEFAULT NULL,
   `zipcode` mediumint DEFAULT NULL,
-  `telephone` varchar(14) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `recommendedby` varchar(2) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `joindate` varchar(19) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `telephone` varchar(14) DEFAULT NULL,
+  `recommendedby` varchar(2) DEFAULT NULL,
+  `joindate` varchar(19) DEFAULT NULL
+);
 
 --
 -- Dumping data for table `Members`
@@ -4171,7 +4171,7 @@ INSERT INTO `Members` (`memid`, `surname`, `firstname`, `address`, `zipcode`, `t
 (35, 'Hunt', 'John', '5 Bullington Lane, Boston', 54333, '(899) 720-6978', '30', '2012-09-19 11:32:45'),
 (36, 'Crumpet', 'Erica', 'Crimson Road, North Reading', 75655, '(811) 732-4816', '2', '2012-09-22 08:36:38'),
 (37, 'Smith', 'Darren', '3 Funktown, Denzington, Boston', 66796, '(822) 577-3541', '', '2012-09-26 18:08:45');
-COMMIT;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
