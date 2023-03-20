@@ -15,6 +15,7 @@ openpyxl = "*"
 pexpect = "*"
 ipywidgets = "*"
 jupyter = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
