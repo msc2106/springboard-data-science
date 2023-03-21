@@ -137,16 +137,60 @@ SELECT facility_name, member_name, cost
 Export the country club data from PHPMyAdmin, and connect to a local SQLite instance from Jupyter notebook 
 for the following questions.  
 
-QUESTIONS:
+QUESTIONS: */
 /* Q10: Produce a list of facilities with a total revenue less than 1000.
 The output of facility name and total revenue, sorted by revenue. Remember
 that there's a different cost for guests and members! */
 
+SELECT name, SUM(revenue) as total_revenue
+    FROM (
+        SELECT name,
+        (
+            CASE WHEN memid = 0 THEN slots * guestcost
+            ELSE slots * membercost
+            END
+        ) AS revenue
+        FROM Members 
+        INNER JOIN Bookings USING (memid)
+        INNER JOIN Facilities USING (facid)
+    )
+    GROUP BY name 
+    HAVING SUM(revenue) < 1000 
+    ORDER BY total_revenue;
+
 /* Q11: Produce a report of members and who recommended them in alphabetic surname,firstname order */
 
+-- SQLite syntax `||` for string concatenation
+SELECT m.surname, m.firstname, r.firstname || ' ' || r.surname as recommender
+    FROM Members as m
+    LEFT JOIN Members as r
+    ON m.recommendedby = r.memid
+    WHERE m.memid <> 0 -- excluding the guest entry
+    ORDER BY m.surname, m.firstname;
 
 /* Q12: Find the facilities with their usage by member, but not guests */
 
+-- interpreting this as total number of slots booked by members
+
+SELECT name, SUM(slots) as total_slots_booked
+    FROM Facilities
+    INNER JOIN Bookings USING (facid)
+    WHERE memid <> 0
+    GROUP BY facid
+    ORDER BY name;
 
 /* Q13: Find the facilities usage by month, but not guests */
-
+SELECT name, month, SUM(slots) AS total_slots_booked
+    FROM Facilities
+    INNER JOIN (
+        SELECT facid, memid, slots, (
+            CASE WHEN starttime LIKE '2012-07%' THEN 7
+            WHEN starttime LIKE '2012-08%' THEN 8
+            ELSE 9
+            END
+        ) AS month
+        FROM Bookings
+    ) AS bookings_months USING (facid)
+    WHERE memid <> 0
+    GROUP BY facid, month
+    ORDER BY name, month;
