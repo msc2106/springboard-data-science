@@ -16,6 +16,7 @@ pexpect = "*"
 ipywidgets = "*"
 jupyter = "*"
 sqlalchemy = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
