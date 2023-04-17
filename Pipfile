@@ -17,6 +17,7 @@ ipywidgets = "*"
 jupyter = "*"
 sqlalchemy = "*"
 scikit-learn = "*"
+graphviz = "*"
 
 [dev-packages]
 
