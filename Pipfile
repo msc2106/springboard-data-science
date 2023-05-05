@@ -18,6 +18,7 @@ jupyter = "*"
 sqlalchemy = "*"
 scikit-learn = "*"
 graphviz = "*"
+featuretools = "*"
 
 [dev-packages]
 
