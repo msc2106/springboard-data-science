@@ -19,6 +19,9 @@ sqlalchemy = "*"
 scikit-learn = "*"
 graphviz = "*"
 featuretools = "*"
+bayesian-optimization = "*"
+lightgbm = "*"
+catboost = "*"
 
 [dev-packages]
 
